@@ -1,0 +1,36 @@
+version: "3.9"
+
+
+services:
+
+  _base: &base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: []
+    volumes:
+      - .:/code
+    environment: &base-environment
+      ENVIRONMENT: local
+
+  app:
+    <<: *base
+    ports:
+      - "8000:8000"
+    entrypoint: ['docker/start.sh']
+
+  test:
+    <<: *base
+    entrypoint: ['docker/test.sh']
+  
+  poetry:
+    <<: *base
+    entrypoint: ["poetry"]
+
+  lint:
+    <<: *base
+    entrypoint: ["docker/lint.sh"]
+
+  lint-check:
+    <<: *base
+    entrypoint: [ "docker/lint-check.sh" ]
