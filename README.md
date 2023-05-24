@@ -1,9 +1,10 @@
 # Python template
 
 ## Default tools
-- Linters and formatters(black, flake8, autoflake, mypy, isort).
+- Linters and formatters(black, flake8, autoflake, mypy, isort). Add ruff
+- Update Dockerfile python version and poetry version 
 - Pytest and coverage libraries for testing.
-- Sphinx(WIP) - add for documendation.
+- Sphinx(WIP) - add for documendation. Or any other types of documentation
 
 
 ## Running applications
