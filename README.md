@@ -1,7 +1,7 @@
 # Python template
 
 Default python template for any project.
-## Default tools and libraries
+## Default tools
 - Linters and formatters(black, mypy, isort, ruff).
 - Pytest and coverage libraries for testing.
 - Sphinx or mkdocs(WIP) - add for documendation.
