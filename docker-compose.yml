@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     entrypoint: []
     volumes:
-      - .:/code
+      - .:/app
     environment: &base-environment
       ENVIRONMENT: local
 
@@ -18,19 +18,3 @@ services:
     ports:
       - "8000:8000"
     entrypoint: ['docker/start.sh']
-
-  test:
-    <<: *base
-    entrypoint: ['docker/test.sh']
-  
-  poetry:
-    <<: *base
-    entrypoint: ["poetry"]
-
-  lint:
-    <<: *base
-    entrypoint: ["docker/lint.sh"]
-
-  lint-check:
-    <<: *base
-    entrypoint: [ "docker/lint-check.sh" ]

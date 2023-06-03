@@ -1,12 +1,19 @@
 # Python template
 
-## Default tools
-- Linters and formatters(black, flake8, autoflake, mypy, isort).
+Default python template for any project.
+## Default tools and libraries
+- Linters and formatters(black, mypy, isort, ruff).
 - Pytest and coverage libraries for testing.
-- Sphinx(WIP) - add for documendation.
+- Sphinx or mkdocs(WIP) - add for documendation.
+- Add pre-commit
 
+## Environment variables
+1. Environment variables for local start up in .env.example file. Create .env file from example.
+2. Environment variables for docker compose in docker-compose.yml file
+### List of envorinemt valiables
+- ENVIRONMENT - define environment for application
 
-## Running applications
+## Installing and Running application
 1. Using local shell
     1. Dependencies installation
         - Create shell using poetry
@@ -21,29 +28,38 @@
         ```shell
         docker/start.sh
         ```
-2. Using docker-compose
-    ```shell
-    docker-compose up app
-    ```
+
+2. Using docker 
+    1. Using docker-compose
+        ```shell
+        docker-compose up app
+        ```
+    2. Using Makefile
+        ```shell
+        make dc-up
+        ```
+    3. Rebuilding application without cache
+        ```shell
+        make dc-build
+        ```
 
 ## Run tests
  - Using docker-compose
     ```shell
-    docker-compose run --rm test
+    make dc-test
     ```
 
 ## Run linters
-WARNING: be aware autoflake can delete some important imports. To prevent it use # noqa
 - Run only check
 
     ```shell
-    docker-compose run --rm lint-check
+    make lint-check
     ```
     
 - Run linters and modify files
 
     ```shell
-    docker-compose run --rm lint
+    make lint
     ```
 
 

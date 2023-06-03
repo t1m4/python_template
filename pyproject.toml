@@ -15,12 +15,11 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
-flake8 = "^6.0.0"
-autoflake = "^2.0.0"
 mypy = "^0.991"
 isort = "^5.11.4"
 pytest = "^7.2.0"
 coverage = "^7.0.1"
+ruff = "^0.0.270"
 
 
 [tool.black]
@@ -48,8 +47,60 @@ omit = [
 ]
 
 
-[tool.autoflake]
-exclude = [
-    'venv',
-    '.venv'
+[tool.ruff]
+target-version = "py310"
+fix = false
+line-length = 120
+select = [
+    "F",   # pyflakes
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "C90", # mccabe
+    "N",   # pep8-naming
+    "DJ",  # flake8-django
+    "C4",  # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "T20", # flake8-print
+    "Q",   # flake8-quotes
+    "ANN", # flake8-annotations
+    "PIE", # flake8-pie
+    "PT",  # flake8-pytest-style
+    "SIM", # flake8-simplify
 ]
+
+ignore = [
+    "PT001",
+    "PT009",
+    "PT023",
+    "ANN002",
+    "ANN102",
+    "ANN003",
+    "ANN101",
+    "C408",
+]
+
+exclude = [
+    "eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".tox",
+    ".venv",
+    ".pyc",
+    ".pyi",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "migrations",
+    "tests",
+]
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.mccabe]
+max-complexity = 10
